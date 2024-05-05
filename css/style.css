@@ -1,0 +1,11 @@
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mobile Phone */
+@media (max-width: 450px) {
+  html {
+    font-size: 55%;
+  }
+}
+
