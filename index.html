@@ -23,16 +23,54 @@
 </head>
 
 <body>
-<!-- PROMOTION ANNOUNCE AGAR LEBIH MENARIK -->
-<div class="bg-indigo-600 px-8 py-6 text-white">
-  <p class="text-center text-sm font-medium">
-    DISKON 50% HANYA SAMPAI 17 AGUSTUS
-    <a href="503.html" class="inline-block underline">Jangan Sampai Ketinggalan!!</a>
-  </p>
+
+  <!-- Navbar start -->
+  <!-- component -->
+  <nav class="navbar">
+    <a class="nav-logo" href="#">
+        <h1>SOULSIDE <span>COFFEE</span></h1>
+    </a>
+<div class="mobile">
+        <button class="mobile-icon" id="hamburger-menu">
+            <span data-feather="menu"></span>
+        </button>
 </div>
-<!-- END PROMOTION -->
+<ul class="navbar-nav">
+        <li><a href="#">Home</a></li>
+  <li><a href="#">About Us</a></li>
+  <li><a href="#">Services</a></li>
+  <li><a href="#">Pricing</a></li>
+  <li><a href="#">Contact</a></li>
+</ul>
+<a class="extra-btn-1" href="#">Tanya Admin</a>
+<a class="extra-btn-2" href="#">Order</a>
+<!-- SHOPPING CART -->
+<!-- <div class="shopping-cart">
+  <div class="cart-item">
+    <img src="img/products/1.jpg" alt="">
+    <h3>Product 1</h3>
+    <div class="item-price">Rp.24.000</div>
+    <i data-feather="trash-2" class="remove-item"></i>
+  </div>
+  <div class="cart-item">
+    <img src="img/products/1.jpg" alt="">
+    <h3>Product 1</h3>
+    <div class="item-price">Rp.24.000</div>
+    <i data-feather="trash-2" class="remove-item"></i>
+  </div>
+  <div class="cart-item">
+    <img src="img/products/1.jpg" alt="">
+    <h3>Product 1</h3>
+    <div class="item-price">Rp.24.000</div>
+    <i data-feather="trash-2" class="remove-item"></i>
+  </div>
+</div> -->
+<!-- END SHOPPING CART -->
+</nav>
+</body>
+
 <!-- HEADER -->
-  <header>
+  <!-- <header>
     <div class="mx-auto max-w-screen-xl px-2 py-4 sm:px-6 sm:py-6 lg:px-4">
       <div class="sm:flex sm:items-center sm:justify-between">
         <div class="text-center sm:text-left">
@@ -43,76 +81,66 @@
   
         <div class="mt-4 flex flex-col gap-4 sm:mt-0 sm:flex-row sm:items-center">
           <a 
-            href="503.html"
+            href="#products"
             class="inline-flex items-center justify-center gap-1.5 rounded-lg border border-gray-200 px-5 py-3 text-gray-500 transition hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:ring"
-            type="button"
-          >
-            <span class="text-sm font-medium"> Order Now </span>
+            type="button">
+            <span class="text-sm font-medium"> Order Sekarang </span>
+  
 
         </a>
   
           <a 
-            href="503.html"
+            href=""
             class="block rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring"
-            type="button"
+            type="button" id="shopping-cart"
           >
-            Tanya Admin
+            Pesanan Anda
         </a>
         </div>
       </div>
-    </div>
-  </header>
+    </header> -->
   <!-- END HEADER -->
   <!-- CALL TO ACTION -->
-<section
-class="overflow-hidden bg-[url(https://images.unsplash.com/photo-1509785307050-d4066910ec1e?q=80&w=1456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-cover bg-top bg-no-repeat"
->
-<div class="bg-black/25 p-8 md:p-12 lg:px-16 lg:py-24">
-  <div class="text-center ltr:sm:text-left rtl:sm:text-right">
-    <h2 class="text-2xl font-bold text-white sm:text-3xl md:text-5xl">SELAMAT DATANG</h2>
-
-    <p class="hidden max-w-lg text-white/90 md:mt-6 md:block md:text-lg md:leading-relaxed">
-      "Tersenyumlah Setiap Saat dengan Secangkir Kenikmatan, 
-      Temukan Ketenangan di Tiap Sudut Kopimu."
-    </p>
-
-    <div class="mt-4 sm:mt-8">
-      <a
-        href="503.html"
-        class="inline-block rounded-full bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-white-400"
-      >
-        Temukan Kopimu disini
-      </a>
+  <section class="section">
+    <div class="section-content">
+      <div class="section-content-text">
+        <h2 class="section-title">SELAMAT DATANG</h2>
+  
+        <p class="section-paragraph">
+          "Tersenyumlah Setiap Saat dengan Secangkir Kenikmatan, 
+          Temukan Ketenangan di Tiap Sudut Kopimu."
+        </p>
+  
+        <div class="section-link-container">
+          <a href="#products" class="section-link">Temukan Kopimu disini</a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</section>
+  </section>
+  
   <!-- END CALL TO ACTION -->
 
   <!-- PRODUCT SECTION CARD -->
     <!-- PRODUCT 1 -->
-  <section>
-    <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-      <header>
-        <h2 class="text-xl font-bold text-indigo-600 sm:text-3xl">Terlaris Saat Ini!</h2>
-  
-        <p class="mt-4 max-w-md text-gray-500">
-          "Kopi terlaris kami memiliki rasa yang kaya dan seimbang, dengan sentuhan cokelat, karamel, dan aroma bunga yang segar. 
-          Setiap tegukan memberikan kehangatan yang memeluk dan membangkitkan selera."
-        </p>
-      </header>
-  
-      <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+  <section class="products" id="products">
+    <h2>Produk Unggulan Kami</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto a saepe, voluptate asperiores sed vel.</p>
+      <!-- ITEM 1 -->
+  <div class="row">
+    <div class="product-card">
+      <div class="product-icons">
+        <a href="#"><i data-feather="shopping-cart"></i></a>
+        <a href="#"><i data-feather="eye"></i></a>
+      </div>
+      <div class="pruduct-image">
+        <a href="503.html" class="group block overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1593443320739-77f74939d0da?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+        alt="Product 1"
+        class="h-[350px] w-full rounded-xl object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"/>
+      </div>
         <li>
-          <a href="503.html" class="group block overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1593443320739-77f74939d0da?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt=""
-              class="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
-            />
-  
-            <div class="relative bg-white pt-3">
-              <h3 class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
+            <div class="relative rounded-md pt-3">
+              <h3 class="text-xl text-black-700 group-hover:underline group-hover:underline-offset-4">
                 Coffee Latte
               </h3>
   
@@ -124,279 +152,89 @@ class="overflow-hidden bg-[url(https://images.unsplash.com/photo-1509785307050-d
             </div>
           </a>
         </li>
-  
-        <li>
-          <a href="503.html" class="group block overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1596952954288-16862d37405b?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt=""
-              class="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
-            />
-  
-            <div class="relative bg-white pt-3">
-              <h3 class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-                Espresso
-              </h3>
-  
-              <p class="mt-2">
-                <span class="sr-only"> Regular Price </span>
-  
-                <span class="tracking-wider text-gray-900"> Rp.21.000 </span>
-              </p>
-            </div>
-          </a>
-        </li>
-  
-        <li>
-          <a href="503.html" class="group block overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1546549095-5d8bc3c37ffa?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt=""
-              class="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
-            />
-  
-            <div class="relative bg-white pt-3">
-              <h3 class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-                Caramel Macchiato
-              </h3>
-  
-              <p class="mt-2">
-                <span class="sr-only"> Regular Price </span>
-  
-                <span class="tracking-wider text-gray-900"> Rp.26.000 </span>
-              </p>
-            </div>
-          </a>
-        </li>
-  
-        <li>
-          <a href="503.html" class="group block overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1551030173-122aabc4489c?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt=""
-              class="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
-            />
-  
-            <div class="relative bg-white pt-3">
-              <h3 class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-                Americano
-              </h3>
-  
-              <p class="mt-2">
-                <span class="sr-only"> Regular Price </span>
-  
-                <span class="tracking-wider text-gray-900"> Rp.22.000 </span>
-              </p>
-            </div>
-          </a>
-        </li>
-      </ul>
     </div>
-  </section>
-  <!-- PRODUCT 2 -->
-  <section>
-  <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-    <header>
-      <h2 class="text-xl font-bold text-indigo-600 sm:text-3xl">Kopi Di Toko Kami</h2>
-
-      <p class="mt-4 max-w-md text-gray-500">
-        "Di toko kami, Anda akan menemukan kopi berkualitas tinggi dari seluruh dunia, dengan rasa yang kaya dan aroma yang menggoda. 
-        Nikmati pengalaman kopi yang tak tertandingi dengan setiap cangkir yang kami sediakan."
-      </p>
-    </header>
-
-    <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      <li>
+    <div class="product-card">
+      <div class="product-icons">
+        <a href="#"><i data-feather="shopping-cart"></i></a>
+        <a href="#"><i data-feather="eye"></i></a>
+      </div>
+      <div class="pruduct-image">
         <a href="503.html" class="group block overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1557006021-b85faa2bc5e2?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt=""
-            class="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
-          />
-
-          <div class="relative bg-white pt-3">
-            <h3 class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-              Cappucino
-            </h3>
-
-            <p class="mt-2">
-              <span class="sr-only"> Regular Price </span>
-
-              <span class="tracking-wider text-gray-900"> Rp.24.000 </span>
-            </p>
-          </div>
-        </a>
-      </li>
-
-      <li>
+        <img src="https://images.unsplash.com/photo-1593443320739-77f74939d0da?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+        alt="Product 1"
+        class="h-[350px] w-full rounded-xl object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"/>
+      </div>
+        <li>
+            <div class="relative rounded-md pt-3">
+              <h3 class="text-xl text-black-700 group-hover:underline group-hover:underline-offset-4">
+                Coffee Latte
+              </h3>
+  
+              <p class="mt-2">
+                <span class="sr-only"> Regular Price </span>
+  
+                <span class="tracking-wider text-gray-900"> Rp.24.000 </span>
+              </p>
+            </div>
+          </a>
+        </li>
+    </div>
+    <div class="product-card">
+      <div class="product-icons">
+        <a href="#"><i data-feather="shopping-cart"></i></a>
+        <a href="#"><i data-feather="eye"></i></a>
+      </div>
+      <div class="pruduct-image">
         <a href="503.html" class="group block overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1618576230663-9714aecfb99a?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt=""
-            class="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
-          />
-
-          <div class="relative bg-white pt-3">
-            <h3 class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-             Mocha
-            </h3>
-
-            <p class="mt-2">
-              <span class="sr-only"> Regular Price </span>
-
-              <span class="tracking-wider text-gray-900"> Rp.27.000 </span>
-            </p>
-          </div>
-        </a>
-      </li>
-
-      <li>
+        <img src="https://images.unsplash.com/photo-1593443320739-77f74939d0da?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+        alt="Product 1"
+        class="h-[350px] w-full rounded-xl object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"/>
+      </div>
+        <li>
+            <div class="relative rounded-md pt-3">
+              <h3 class="text-xl text-black-700 group-hover:underline group-hover:underline-offset-4">
+                Coffee Latte
+              </h3>
+  
+              <p class="mt-2">
+                <span class="sr-only"> Regular Price </span>
+  
+                <span class="tracking-wider text-gray-900"> Rp.24.000 </span>
+              </p>
+            </div>
+          </a>
+        </li>
+    </div>
+    <div class="product-card">
+      <div class="product-icons">
+        <a href="#"><i data-feather="shopping-cart"></i></a>
+        <a href="#"><i data-feather="eye"></i></a>
+      </div>
+      <div class="pruduct-image">
         <a href="503.html" class="group block overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1594631661960-34762327295a?q=80&w=1372&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt=""
-            class="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
-          />
-
-          <div class="relative bg-white pt-3">
-            <h3 class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-              Affogato
-            </h3>
-
-            <p class="mt-2">
-              <span class="sr-only"> Regular Price </span>
-
-              <span class="tracking-wider text-gray-900"> Rp.33.000 </span>
-            </p>
-          </div>
-        </a>
-      </li>
-
-      <li>
-        <a href="503.html" class="group block overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1620360289100-030b032e5a27?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt=""
-            class="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
-          />
-
-          <div class="relative bg-white pt-3">
-            <h3 class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-              Iced Coffee
-            </h3>
-
-            <p class="mt-2">
-              <span class="sr-only"> Regular Price </span>
-
-              <span class="tracking-wider text-gray-900"> Rp.21.000 </span>
-            </p>
-          </div>
-        </a>
-      </li>
-    </ul>
+        <img src="https://images.unsplash.com/photo-1593443320739-77f74939d0da?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+        alt="Product 1"
+        class="h-[350px] w-full rounded-xl object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"/>
+      </div>
+        <li>
+            <div class="relative rounded-md pt-3">
+              <h3 class="text-xl text-black-700 group-hover:underline group-hover:underline-offset-4">
+                Coffee Latte
+              </h3>
+  
+              <p class="mt-2">
+                <span class="sr-only"> Regular Price </span>
+  
+                <span class="tracking-wider text-gray-900"> Rp.24.000 </span>
+              </p>
+            </div>
+          </a>
+        </li>
+    </div>
   </div>
 </section>
-<span class="relative flex justify-center">
-  <div
-    class="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-transparent bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-75"
-  ></div>
-
-  <span class="relative z-10 bg-white px-6 text-gray-500">SOULSIDE COFFEE</span>
-</span>
-<!-- PRODUCT 3 -->
-<section>
-  <div class="mx-auto max-w-screen-xl px-4 py-4 sm:px-6 sm:py-4 lg:px-8">
-    <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      <li>
-        <a href="503.html" class="group block overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1557006021-b85faa2bc5e2?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt=""
-            class="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
-          />
-
-          <div class="relative bg-white pt-3">
-            <h3 class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-              Cappucino
-            </h3>
-
-            <p class="mt-2">
-              <span class="sr-only"> Regular Price </span>
-
-              <span class="tracking-wider text-gray-900"> Rp.24.000 </span>
-            </p>
-          </div>
-        </a>
-      </li>
-
-      <li>
-        <a href="503.html" class="group block overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1618576230663-9714aecfb99a?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt=""
-            class="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
-          />
-
-          <div class="relative bg-white pt-3">
-            <h3 class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-             Mocha
-            </h3>
-
-            <p class="mt-2">
-              <span class="sr-only"> Regular Price </span>
-
-              <span class="tracking-wider text-gray-900"> Rp.27.000 </span>
-            </p>
-          </div>
-        </a>
-      </li>
-
-      <li>
-        <a href="503.html" class="group block overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1594631661960-34762327295a?q=80&w=1372&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt=""
-            class="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
-          />
-
-          <div class="relative bg-white pt-3">
-            <h3 class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-              Affogato
-            </h3>
-
-            <p class="mt-2">
-              <span class="sr-only"> Regular Price </span>
-
-              <span class="tracking-wider text-gray-900"> Rp.33.000 </span>
-            </p>
-          </div>
-        </a>
-      </li>
-
-      <li>
-        <a href="503.html" class="group block overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1620360289100-030b032e5a27?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt=""
-            class="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
-          />
-
-          <div class="relative bg-white pt-3">
-            <h3 class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-              Iced Coffee
-            </h3>
-
-            <p class="mt-2">
-              <span class="sr-only"> Regular Price </span>
-
-              <span class="tracking-wider text-gray-900"> Rp.21.000 </span>
-            </p>
-          </div>
-        </a>
-      </li>
-    </ul>
-  </div>
-</section>
+    <!-- END ITEM 1 -->
+   
   <!-- END PRODUCT SECTION -->
 
 
