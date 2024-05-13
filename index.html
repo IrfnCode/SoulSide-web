@@ -7,6 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- TAILWIND CSS Untuk Beberapa Keperluan -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- ALPINE JS (SEBUAH LIBRARY JAVA SCRIPT UNTUK BEBERAPA KEPERLUAN)-->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- APP (FILE UNTUK MENGELOLA ALPINEJS NYA) -->
+  <script src="src/app.js"></script>
+
   <title>SOULSIDE COFFEE</title>
 
   <!-- FONTS UNTUK KEPERLUAN STYLING -->
@@ -26,7 +31,7 @@
 
   <!-- Navbar start -->
   <!-- component -->
-  <nav class="navbar">
+  <nav class="navbar" x-data>
     <a class="nav-logo" href="#">
         <h1>SOULSIDE <span>COFFEE</span></h1>
     </a>
@@ -40,29 +45,49 @@
   <li><a href="#about">Tentang Kami</a></li>
   <li><a href="#products">Menu</a></li>
   <li><a href="#Kontak">Kontak</a></li>
-  <!-- <li><a href="#">Kontak</a></li> -->
 </ul>
-<a class="extra-btn-1" href="#">Tanya Admin</a>
-<a class="extra-btn-2" href="#" id="shopping-cart-button">Order</a>
+<a class="extra-btn-1" href="https://wa.me/0">Tanya Admin</a>
+<a class="extra-btn-2" href="#" id="shopping-cart-button">Order <span class="quantity-badge" x-show="$store.cart.quantity" x-text="$store.cart.quantity"></span></a>
 <!-- SHOPPING CART -->
 <div class="shopping-cart">
+  <template x-for="(item, index) in $store.cart.items" x-key="index">
   <div class="cart-item">
-    <img src="img/products/1.jpg" alt="">
-    <h3>Product 1</h3>
-    <div class="item-price">Rp.24.000</div>
-    <i data-feather="trash-2" class="remove-item"></i>
-  </div>
-  <div class="cart-item">
-    <img src="img/products/1.jpg" alt="">
-    <h3>Product 1</h3>
-    <div class="item-price">Rp.24.000</div>
-    <i data-feather="trash-2" class="remove-item"></i>
-  </div>
-  <div class="cart-item">
-    <img src="img/products/1.jpg" alt="">
-    <h3>Product 1</h3>
-    <div class="item-price">Rp.24.000</div>
-    <i data-feather="trash-2" class="remove-item"></i>
+    <img :src="`img/products/${item.img}`" :alt="item.name">
+    <div class="item-detail">
+      <h3 x-text="item.name"></h3>
+      <div class="item-price">
+        <span x-text="rupiah(item.price)"></span> &times;
+        <button id="remove" @click="$store.cart.remove(item.id)">&minus;</button>
+        <span x-text="item.quantity"></span>
+        <button id="add" @click="$store.cart.add(item)">&plus;</button> &equals;
+        <span x-text="rupiah(item.total)"></span>
+      </div>
+      </div>
+    </div>
+  </template>
+  <h4 x-show="!$store.cart.items.length" style="margin-top: 1.5rem;">Orderan Kosong Nih, Ayo Pesan Sekarang!</h4>
+  <h4 x-show="$store.cart.items.length">Total : <span x-text="rupiah($store.cart.total)"></span></h4>
+
+  <div class="form-container" x-show="$store.cart.items.length">
+    <form id="checkout-form">
+      <h5>Customer Detail</h5>
+    
+      <label for="name">
+        <span>Name</span>
+        <input type="text" name="name" id="name" x-model="$store.cart.name">
+      </label>
+      <label for="email">
+        <span>Email</span>
+        <input type="email" name="email" id="email" x-model="$store.cart.email">
+      </label>
+      <label for="phone">
+        <span>Phone</span>
+        <input type="tel" name="phone" id="phone" x-model="$store.cart.phone">
+      </label>
+    
+      <button class="checkout-button" type="submit" id="checkout-button" @click="$store.cart.checkout()">Checkout</button>
+    </form>
+    
   </div>
 </div>
 <!-- END SHOPPING CART -->
@@ -109,115 +134,62 @@
 
   <!-- PRODUCT SECTION CARD -->
     <!-- PRODUCT 1 -->
-  <section class="products" id="products">
+  <section class="products" id="products" x-data="products">
     <h2>Menu <span>kami</span></h2>
     <p>Nikmati kopi berkualitas tinggi dengan beragam rasa dan aroma yang menggugah. Setiap cangkir adalah kombinasi unik dari kekuatan dan kelezatan, menawarkan pengalaman kopi yang tak tertandingi dalam setiap tegukan.</p>
       <!-- ITEM 1 -->
   <div class="row">
+    <template x-for="(item, index) in items" x-key="index">
     <div class="product-card">
       <div class="product-icons">
-        <a href="#"><i data-feather="shopping-cart"></i></a>
-        <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
+        <a href="#" @click.prevent="$store.cart.add(item)">
+          <svg
+          width="24"
+          height="24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <use href="img/feather-sprite.svg#shopping-cart" />
+        </svg>
+      </a>
+        <a href="#" class="item-detail-button"><svg
+          width="24"
+          height="24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <use href="img/feather-sprite.svg#eye" />
+        </svg>
+      </a>
       </div>
       <div class="pruduct-image">
         <a href="503.html" class="group block overflow-hidden">
-        <img src="img/menu/menu1.jpg" 
-        alt="Product 1"
+        <img :src="`img/products/${item.img}`"
+        :alt="item.name"
         class="h-[350px] w-full rounded-xl object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"/>
       </div>
         <li>
             <div class="relative rounded-md pt-3">
-              <h3 class="text-xl text-black-700 group-hover:underline group-hover:underline-offset-4">
-                Coffee Latte
+              <h3 x-text="item.name" class="text-xl text-black-700 group-hover:underline group-hover:underline-offset-4">
+                
               </h3>
   
               <p class="mt-2">
                 <span class="sr-only"> Regular Price </span>
   
-                <span class="tracking-wider text-gray-900"> Rp.24.000 </span>
+                <span x-text="rupiah(item.price)" class="tracking-wider text-gray-900"></span>
               </p>
             </div>
           </a>
         </li>
     </div>
-    <div class="product-card">
-      <div class="product-icons">
-        <a href="#"><i data-feather="shopping-cart"></i></a>
-        <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
-      </div>
-      <div class="pruduct-image">
-        <a href="503.html" class="group block overflow-hidden">
-        <img src="img/menu/menu1.jpg" 
-        alt="Product 1"
-        class="h-[350px] w-full rounded-xl object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"/>
-      </div>
-        <li>
-            <div class="relative rounded-md pt-3">
-              <h3 class="text-xl text-black-700 group-hover:underline group-hover:underline-offset-4">
-                Coffee Latte
-              </h3>
-  
-              <p class="mt-2">
-                <span class="sr-only"> Regular Price </span>
-  
-                <span class="tracking-wider text-gray-900"> Rp.24.000 </span>
-              </p>
-            </div>
-          </a>
-        </li>
-    </div>
-    <div class="product-card">
-      <div class="product-icons">
-        <a href="#"><i data-feather="shopping-cart"></i></a>
-        <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
-      </div>
-      <div class="pruduct-image">
-        <a href="503.html" class="group block overflow-hidden">
-        <img src="img/menu/menu1.jpg" 
-        alt="Product 1"
-        class="h-[350px] w-full rounded-xl object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"/>
-      </div>
-        <li>
-            <div class="relative rounded-md pt-3">
-              <h3 class="text-xl text-black-700 group-hover:underline group-hover:underline-offset-4">
-                Coffee Latte
-              </h3>
-  
-              <p class="mt-2">
-                <span class="sr-only"> Regular Price </span>
-  
-                <span class="tracking-wider text-gray-900"> Rp.24.000 </span>
-              </p>
-            </div>
-          </a>
-        </li>
-    </div>
-    <div class="product-card">
-      <div class="product-icons">
-        <a href="#"><i data-feather="shopping-cart"></i></a>
-        <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
-      </div>
-      <div class="pruduct-image">
-        <a href="503.html" class="group block overflow-hidden">
-        <img src="img/menu/menu1.jpg" 
-        alt="Product 1"
-        class="h-[350px] w-full rounded-xl object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"/>
-      </div>
-        <li>
-            <div class="relative rounded-md pt-3">
-              <h3 class="text-xl text-black-700 group-hover:underline group-hover:underline-offset-4">
-                Coffee Latte
-              </h3>
-  
-              <p class="mt-2">
-                <span class="sr-only"> Regular Price </span>
-  
-                <span class="tracking-wider text-gray-900"> Rp.24.000 </span>
-              </p>
-            </div>
-          </a>
-        </li>
-    </div>
+  </template>
   </div>
 </section>
     <!-- END ITEM 1 -->
@@ -231,21 +203,21 @@
   </p>
   <div class="Kontak-row">
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2124.383642645894!2d104.44666328823166!3d0.9245866913219662!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d97363f838ac7d%3A0x8a1a5f45eaf1cdde!2sIrfnCode!5e0!3m2!1sid!2sid!4v1715557428290!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
-    <form action="">
+    <form id="contact-form">
       <div class="input-kontak">
-        <i data-feather="user"></i>
-        <input type="text" placeholder="Masukkan Nama">
+          <i data-feather="user"></i>
+          <input id="nama" type="text" placeholder="Masukkan Nama">
       </div>
       <div class="input-kontak">
-        <i data-feather="mail"></i>
-        <input type="text" placeholder="Masukkan Email">
+          <i data-feather="mail"></i>
+          <input id="emails" type="text" placeholder="Masukkan Email">
       </div>
       <div class="input-kontak">
-        <i data-feather="phone"></i>
-        <input type="text" placeholder="Masukkan No.Hp">
+          <i data-feather="phone"></i>
+          <input id="nohp" type="text" placeholder="Masukkan No.Hp">
       </div>
-      <button type="submit" class="btn">Kirim Pesan</button>
-    </form>
+      <button type="button" class="btn" onclick="sendWhatsAppMessage()">Kirim Pesan</button>
+  </form>
   </div>
 </section>
 <!-- Kontak Section End -->

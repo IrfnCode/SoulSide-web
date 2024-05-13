@@ -49,3 +49,20 @@ window.onclick = (e) => {
         ItemDetailModal.style.display = "none";
     }
 }
+// Fungsi Kontak
+function sendWhatsAppMessage() {
+    // Mendapatkan data dari formulir
+    var nama = document.getElementById('nama').value;
+    var emails = document.getElementById('emails').value;
+    var nohp = document.getElementById('nohp').value;
+
+    // Membangun pesan WhatsApp
+    var whatsappMessage = "Halo Admin SoulSide Coffee\n";
+    whatsappMessage += "Perkenalkan saya " + nama + "\n";
+    whatsappMessage += "yang dimana alamat email saya adalah " + emails + "\n";
+    whatsappMessage += "dan nomor hp saya adalah " + nohp + ",\n";
+    whatsappMessage += "Boleh Bantu Saya? Saya ingin Menanyakan Sesuatu Nih Min!\n";
+
+    // Membuka WhatsApp dengan pesan yang dibangun
+    window.open("https://wa.me/+6285361093717?text=" + encodeURIComponent(whatsappMessage), '_blank');
+}
