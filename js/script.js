@@ -1,41 +1,51 @@
+//Toggle Class Active Untuk Navbar Sidebar
+const navbarNav = document.querySelector(".navbar-nav");
+//ketika di Menu sidebar di klik
+document.querySelector("#hamburger-menu").onclick = () => {
+    navbarNav.classList.toggle("active");
+}
 
-    // Burger menus
-    document.addEventListener('DOMContentLoaded', function() {
-    // open
-    const burger = document.querySelectorAll('.mobile-icon');
-    const menu = document.querySelectorAll('.navbar-menu');
-
-    if (burger.length && menu.length) {
-        for (var i = 0; i < burger.length; i++) {
-            burger[i].addEventListener('click', function() {
-                for (var j = 0; j < menu.length; j++) {
-                    menu[j].classList.toggle('hidden');
-                }
-            });
-        }
+document.addEventListener('click', function(e) {
+    if(!hamburger.contains(e.target) && !navbarNav.contains(e.target)) {
+        navbarNav.classList.remove('active');
     }
-
-    // close
-    const close = document.querySelectorAll('.navbar-close-btn');
-    const backdrop = document.querySelectorAll('.navbar-backdrop');
-
-    if (close.length) {
-        for (var i = 0; i < close.length; i++) {
-            close[i].addEventListener('click', function() {
-                for (var j = 0; j < menu.length; j++) {
-                    menu[j].classList.toggle('hidden');
-                }
-            });
-        }
-    }
-
-    if (backdrop.length) {
-        for (var i = 0; i < backdrop.length; i++) {
-            backdrop[i].addEventListener('click', function() {
-                for (var j = 0; j < menu.length; j++) {
-                    menu[j].classList.toggle('hidden');
-                }
-            });
-        }
+    
+});
+//Toggle Class Active Untuk Shopping Cart/Order
+const ShoppingCart = document.querySelector(".shopping-cart");
+document.querySelector("#shopping-cart-button").onclick = (e) => {
+    ShoppingCart.classList.toggle("active");
+    e.preventDefault();
+}
+document.addEventListener('click', function(e) {
+    if(!sc.contains(e.target) && !ShoppingCart.contains(e.target)) {
+        ShoppingCart.classList.remove('active');
     }
 });
+// Ketika Diklik diluar hamburger akan menutup menunya
+const hamburger =  document.querySelector ('#hamburger-menu');
+const sc = document.querySelector ('#shopping-cart-button');
+
+//Modal Box
+const ItemDetailModal = document.querySelector("#item-detail-modal");
+const ItemDetailButtons = document.querySelectorAll(".item-detail-button");
+
+ItemDetailButtons.forEach((btn) => {
+    btn.onclick = (e) => {
+       ItemDetailModal.style.display = 'flex';
+       e.preventDefault();
+    }
+    
+})
+
+// Klik tombol close
+document.querySelector('.modal .close-icon').onclick = (e) => {
+    ItemDetailModal.style.display = 'none';
+    e.preventDefault();
+}
+//Klik diluar modal
+window.onclick = (e) => {
+    if (e.target == ItemDetailModal) {
+        ItemDetailModal.style.display = "none";
+    }
+}

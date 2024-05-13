@@ -18,7 +18,7 @@ html {
   
   .navbar .navbar-nav a {
       color: #d3a178;
-      display: inline-block;
+      display: block;
       font-size: 0.975rem;
       margin: 0 1.5rem;
       font-weight: 600;
@@ -60,15 +60,17 @@ html {
      }
      .navbar .navbar-nav {
       position: absolute;
+      text-align: center;
       top: 100%;
-      right: 0%;
+      right: -100%;
       background-color: #ffffff ;
-      width: 40rem;
+      width: 20rem;
       height: 100vh;
-
+      z-index: 1000; /*untuk menempatkan navbar diatas kalo ga pake ketimpa sama section*/
+      transition: 0.9s;
      }
      .navbar .navbar-nav.active {
-      right: 0%;
+      right: 0;
        
      }
  }
@@ -183,10 +185,13 @@ right: 9%;
   background-color: #c08c61;
   color: #000000;
   }
- 
+ /* Navbar End */
+
+
   /* Call To Action Section */
   .section {
-    overflow: hidden;
+    /* overflow: hidden; */
+    display: flex;
     background-image: url("../img/bg2.gif");
     background-size: cover;
     background-position: top;
@@ -229,11 +234,6 @@ right: 9%;
   }
   @keyframes typing{
     10% { width: 0 }
-    
-    /* 100% {
-      left: 100%;
-      margin: 0 -35px 0 35px;
-    } */
   }
   @keyframes cursor{
     50% { border-color: transparent }
@@ -246,7 +246,7 @@ right: 9%;
   }
   
   .section-paragraph {
-    display: none;
+    display: flex;
     max-width: 30rem;
     color: rgba(255, 255, 255, 0.9);
     margin-top: 1rem;
@@ -255,7 +255,7 @@ right: 9%;
   
   @media (min-width: 640px) {
     .section-paragraph {
-      display: block;
+      display: flex;
     }
   }
   
@@ -281,20 +281,95 @@ right: 9%;
   .section-link:focus {
     box-shadow: 0 0 0 2px #fff, 0 0 0 4px #4f46e5;
   }
+/* END Call To Action Section  */
+
+/* Tentang Kami Section */
+
+.about {
+padding: 5rem 7% 1.4rem; 
+}
+.about h2 {
+text-align: center;
+font-size: 2.6rem;
+margin-bottom: 3rem;
+color: #ffccae; 
+font-size: 3rem;
+line-height: 2rem; 
+font-weight: 700; 
+
+}
+.about span {
+  color: #000000;
+}
+.about .about-content {
+  display: flex;
+}
+.about .about-content .about-img {
+  flex: 1 1 45rem;
   
-  
-  /* END Call To Action Section  */
+}
+.about .about-content .about-img img {
+  width: 100%;
+  border-radius: 5%;
+
+}
+.about .about-content .konten {
+  flex: 1 1 35rem;
+  padding: 0 1rem;
+
+}
+.about .about-content .konten h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #381e08;
+  font-weight: 700;
+}
+.about .about-content .konten p {
+  color: #ffccae;
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+  font-weight: 100;
+  line-height: 1.2;
+
+}
+@media (max-width: 758px) {
+  .about .about-content {
+    flex-wrap: wrap;
+  }
+  .about .about-content .about-img {
+    height: 24rem;
+    object-fit: cover;
+    object-position: center;
+  }
+  .about .about-content .konten {
+    padding: 0;
+  }
+  .about .about-content .konten h3 {
+    margin-top: 1rem;
+    font-size: 2rem;
+  }
+  .about .about-content .konten p {
+    font-size: 1.3rem;
+  }
+}
+/* END Tentang Kami Section */
+
+
 /* Shopping Cart */
 .shopping-cart {
   position: absolute;
   top: 100%;
-  right: 0;
+  right: -100%;
   height: 100vh;
   width: 35rem;
   padding: 0 1.5rem;
-  background-color: rgb(0, 136, 255);
+  background-color: rgb(255, 255, 255);
   color: rgba(0, 0, 0, 0.801);
-
+  z-index: 999;
+  transition: 0.4s linear;
+}
+.shopping-cart.active {
+  right: 0;
 }
 .shopping-cart .cart-item {
   position: relative;
@@ -334,6 +409,9 @@ right: 9%;
 
   gap: 10rem;
 }
+/* Shopping Cart End */
+
+
 /* Product Section */
 .products {
   padding: 8rem 7% 1.4rem;
@@ -347,6 +425,12 @@ font-size: 3rem;
 line-height: 2rem; 
 font-weight: 700; 
 
+}
+.products span {
+  color: #000000;
+}
+.products p {
+  color : #ffccae;
 }
 .products .row {
   display: grid;
@@ -394,8 +478,226 @@ font-weight: 700;
   width: 25rem;
 }
 
+/* Product Section End */
+
+/* Kontak Section */
+.kontak {
+  padding: 8rem 7% 1.4rem;
+  margin-bottom: 5rem;
+
+}
+.kontak h2 { 
+text-align: center;
+font-size: 2.6rem;
+margin-bottom: 3rem;
+color: #ffccae; 
+font-size: 3rem;
+line-height: 2rem; 
+font-weight: 700; 
+}
+.kontak span {
+  color: #000000;
+}
+.kontak p {
+  color : #ffccae;
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+.kontak .Kontak-row {
+  display: flex;
+  margin-top: 2rem;
+  background-color: #503422;
+}
+.kontak .Kontak-row .map {
+  flex: 1 1 45rem;
+  width: 100%;
+  object-fit: cover;
+
+}
+.input-kontak {
+  color: #ffffff;
+  
+}
+.kontak .Kontak-row form {
+  flex: 1 1 45rem;
+  padding: 5rem 2rem;
+  text-align: center;
+
+}
+.kontak .Kontak-row form .input-kontak {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  background-color: #85573a;
+  border: 1px solid #9c9c9c;
+  border-radius: 5rem;
+  padding-left: 2rem;
+}
+.kontak .Kontak-row form .input-kontak input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.2rem;
+  background: none;
+  color: #fff;
+}
+.kontak .Kontak-row form .btn {
+  margin-top: 3rem;
+  display: inline-block;
+  padding: 1rem 3rem;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #85573a;
+  cursor: pointer;
+  border-radius: 5rem;
+
+}
+.kontak .Kontak-row form .btn:hover {
+  background-color: #bb7c55; 
+  border: 1px solid rgba(255, 255, 255, 0.801);
+  color: rgb(255, 255, 255);
+}
+@media (max-width: 758px) {
+  .kontak .Kontak-row {
+    flex-wrap: wrap;
+  }
+  .kontak .Kontak-row .map {
+    height: 20rem;
+    object-fit: cover;
+    object-position: center;
+  }
+  .kontak .Kontak-row form {
+    padding-top: 0;
+  }
+}
+/* Kontak Section End */
+/* Footer */
+.footernya {
+display: flex; 
+flex-direction: column; 
+align-items: center; 
+text-align: center; 
+background-color: #5a3a26; 
+}
+.copyright {
+  padding: 1rem; 
+  width: 100%; 
+  text-align: center; 
+  color: #fff;
+  background-color: #503422; 
+
+}
+.container-foot {
+  padding-top: 2.25rem; 
+}
+.footernya .container-foot .foot-icon {
+display: flex; 
+margin-bottom: 1.5rem; 
+margin-left: 0.5rem; 
+justify-content: center; 
+
+}
+.footernya .container-foot .foot-icon .btn-foot {
+padding: 0.75rem; 
+border-radius: 9999px; 
+font-weight: 500; 
+line-height: 1.5; 
+text-transform: uppercase; 
+background-color: transparent; 
+transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+transition-duration: 300ms; 
+transition-duration: 150ms; 
+transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); 
+color:#fff
+}
+.footernya .container-foot .foot-icon .btn-foot:hover {
+  background-color: #503422;
+}
+.footernya .container-foot .foot-icon .svg-foot svg {
+  width: 1.25rem; 
+  height: 1.25rem; 
+  
+}
+/* Footer End */
+
+/* Modal Box */
+  /* Item Detail */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 110%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+
+  }
+  .modal-container {
+    position: relative;
+    background-color: #fefefe;
+    color: #000000;
+    margin: 15% auto;
+    padding: 1.2rem;
+    border: 1px solid #666;
+    width: 80%;
+    animation: animateModal 0.5s;
+  }
+  /* Modal Animation */
+  @keyframes animateModal {
+    from {
+      top: -300%;
+      opacity: 0;
+    }
+    to {
+      top: 0;
+      opacity: 1;
+    }
+  }
+.modal-container .close-icon {
+  position: absolute;
+  right: 1rem;
+
+}
+.modal-content {
+  display: flex;
+  flex: nowrap;
+
+}
+
+.modal-content img {
+  height: 15rem;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+
+}
+.modal-content p {
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  margin-top: 1.2rem;
+}
+.modal-content a {
+  display: flex;
+  gap: 1rem;
+  width: 12rem;
+  background-color: #503422;
+  color: #fff;
+  margin-top: 1rem;
+  padding: 1rem 1.6rem;
+
+}
+@media (max-width: 758px) {
+  .modal-content {
+    flex-wrap: wrap;
+  }
+}
 
 
+
+
+
+  
 /* Mobile Phone */
 @media (max-width: 450px) {
   html {

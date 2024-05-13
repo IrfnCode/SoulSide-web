@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- MENGGUNAKAN TAILWIND CSS (AGAR LEBIH MUDAH) -->
+  <!-- TAILWIND CSS Untuk Beberapa Keperluan -->
   <script src="https://cdn.tailwindcss.com"></script>
   <title>SOULSIDE COFFEE</title>
 
@@ -36,16 +36,16 @@
         </button>
 </div>
 <ul class="navbar-nav">
-        <li><a href="#">Home</a></li>
-  <li><a href="#">About Us</a></li>
-  <li><a href="#">Services</a></li>
-  <li><a href="#">Pricing</a></li>
-  <li><a href="#">Contact</a></li>
+  <li><a href="#section">Home</a></li>
+  <li><a href="#about">Tentang Kami</a></li>
+  <li><a href="#products">Menu</a></li>
+  <li><a href="#Kontak">Kontak</a></li>
+  <!-- <li><a href="#">Kontak</a></li> -->
 </ul>
 <a class="extra-btn-1" href="#">Tanya Admin</a>
-<a class="extra-btn-2" href="#">Order</a>
+<a class="extra-btn-2" href="#" id="shopping-cart-button">Order</a>
 <!-- SHOPPING CART -->
-<!-- <div class="shopping-cart">
+<div class="shopping-cart">
   <div class="cart-item">
     <img src="img/products/1.jpg" alt="">
     <h3>Product 1</h3>
@@ -64,42 +64,10 @@
     <div class="item-price">Rp.24.000</div>
     <i data-feather="trash-2" class="remove-item"></i>
   </div>
-</div> -->
+</div>
 <!-- END SHOPPING CART -->
 </nav>
 </body>
-
-<!-- HEADER -->
-  <!-- <header>
-    <div class="mx-auto max-w-screen-xl px-2 py-4 sm:px-6 sm:py-6 lg:px-4">
-      <div class="sm:flex sm:items-center sm:justify-between">
-        <div class="text-center sm:text-left">
-          <h1 class="text-2xl font-bold text-indigo-700 sm:text-3xl">SOULSIDE COFFEE</h1>
-  
-          <p class="mt-1.5 text-sm text-gray-500">"Tetesan kopi, setitik kebahagiaan."</p>
-        </div>
-  
-        <div class="mt-4 flex flex-col gap-4 sm:mt-0 sm:flex-row sm:items-center">
-          <a 
-            href="#products"
-            class="inline-flex items-center justify-center gap-1.5 rounded-lg border border-gray-200 px-5 py-3 text-gray-500 transition hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:ring"
-            type="button">
-            <span class="text-sm font-medium"> Order Sekarang </span>
-  
-
-        </a>
-  
-          <a 
-            href=""
-            class="block rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring"
-            type="button" id="shopping-cart"
-          >
-            Pesanan Anda
-        </a>
-        </div>
-      </div>
-    </header> -->
-  <!-- END HEADER -->
   <!-- CALL TO ACTION -->
   <section class="section">
     <div class="section-content">
@@ -120,21 +88,40 @@
   
   <!-- END CALL TO ACTION -->
 
+  <!-- TENTANG KAMI SECTION -->
+
+  <section id="about" class="about">
+    <h2>Tentang <span>Kami</span></h2>
+    <div class="about-content">
+      <div class="about-img">
+        <img src="img/about1.jpg"
+         alt="Tentang Kami">
+      </div>
+      <div class="konten">
+        <h3>Kenapa Memilih Kopi Kami?</h3>
+        <p> Di SoulSide Coffee, kami percaya bahwa setiap cangkir kopi adalah kisah yang ingin diceritakan. Itulah sebabnya kami berkomitmen untuk menyajikan kopi berkualitas terbaik dari berbagai sudut dunia, dipanggang secara hati-hati untuk mengekstrak rasa terbaiknya. Dari biji-biji kopi yang dipilih dengan teliti hingga teknik penyeduhan yang tepat, setiap cangkir kopi di sini adalah perayaan atas kesempurnaan rasa.</p>
+        <p>tempat di mana kehangatan bertemu dengan kelezatan dalam setiap detilnya. Kami adalah lebih dari sekadar kafe, kami adalah rumah bagi para pecinta kopi, pencinta makanan, dan penggemar suasana yang menyenangkan.</p>
+      </div>
+    </div> 
+  </section>
+
+  <!-- END TENTANG KAMI SECTION -->
+
   <!-- PRODUCT SECTION CARD -->
     <!-- PRODUCT 1 -->
   <section class="products" id="products">
-    <h2>Produk Unggulan Kami</h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto a saepe, voluptate asperiores sed vel.</p>
+    <h2>Menu <span>kami</span></h2>
+    <p>Nikmati kopi berkualitas tinggi dengan beragam rasa dan aroma yang menggugah. Setiap cangkir adalah kombinasi unik dari kekuatan dan kelezatan, menawarkan pengalaman kopi yang tak tertandingi dalam setiap tegukan.</p>
       <!-- ITEM 1 -->
   <div class="row">
     <div class="product-card">
       <div class="product-icons">
         <a href="#"><i data-feather="shopping-cart"></i></a>
-        <a href="#"><i data-feather="eye"></i></a>
+        <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
       </div>
       <div class="pruduct-image">
         <a href="503.html" class="group block overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1593443320739-77f74939d0da?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+        <img src="img/menu/menu1.jpg" 
         alt="Product 1"
         class="h-[350px] w-full rounded-xl object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"/>
       </div>
@@ -156,11 +143,11 @@
     <div class="product-card">
       <div class="product-icons">
         <a href="#"><i data-feather="shopping-cart"></i></a>
-        <a href="#"><i data-feather="eye"></i></a>
+        <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
       </div>
       <div class="pruduct-image">
         <a href="503.html" class="group block overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1593443320739-77f74939d0da?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+        <img src="img/menu/menu1.jpg" 
         alt="Product 1"
         class="h-[350px] w-full rounded-xl object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"/>
       </div>
@@ -182,11 +169,11 @@
     <div class="product-card">
       <div class="product-icons">
         <a href="#"><i data-feather="shopping-cart"></i></a>
-        <a href="#"><i data-feather="eye"></i></a>
+        <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
       </div>
       <div class="pruduct-image">
         <a href="503.html" class="group block overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1593443320739-77f74939d0da?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+        <img src="img/menu/menu1.jpg" 
         alt="Product 1"
         class="h-[350px] w-full rounded-xl object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"/>
       </div>
@@ -208,11 +195,11 @@
     <div class="product-card">
       <div class="product-icons">
         <a href="#"><i data-feather="shopping-cart"></i></a>
-        <a href="#"><i data-feather="eye"></i></a>
+        <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
       </div>
       <div class="pruduct-image">
         <a href="503.html" class="group block overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1593443320739-77f74939d0da?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+        <img src="img/menu/menu1.jpg" 
         alt="Product 1"
         class="h-[350px] w-full rounded-xl object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"/>
       </div>
@@ -237,20 +224,44 @@
    
   <!-- END PRODUCT SECTION -->
 
-
+<!-- Kontak Section -->
+<section id="Kontak" class="kontak">
+  <h2>Kontak <span>Kami</span></h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, laborum.
+  </p>
+  <div class="Kontak-row">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2124.383642645894!2d104.44666328823166!3d0.9245866913219662!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d97363f838ac7d%3A0x8a1a5f45eaf1cdde!2sIrfnCode!5e0!3m2!1sid!2sid!4v1715557428290!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
+    <form action="">
+      <div class="input-kontak">
+        <i data-feather="user"></i>
+        <input type="text" placeholder="Masukkan Nama">
+      </div>
+      <div class="input-kontak">
+        <i data-feather="mail"></i>
+        <input type="text" placeholder="Masukkan Email">
+      </div>
+      <div class="input-kontak">
+        <i data-feather="phone"></i>
+        <input type="text" placeholder="Masukkan No.Hp">
+      </div>
+      <button type="submit" class="btn">Kirim Pesan</button>
+    </form>
+  </div>
+</section>
+<!-- Kontak Section End -->
   <!-- Footer start -->
   <!--Footer container-->
 <footer
-class="flex flex-col items-center bg-indigo-600 text-center text-surface dark:bg-indigo-600 dark:text-white">
-<div class="container pt-9">
+class="footernya">
+<div class="container-foot">
   <!-- Social media icons container -->
-  <div class="mb-6 flex justify-center space-x-2">
+  <div class="foot-icon">
     <a
       href="https://www.facebook.com/hanya.pemiliknya"
       type="button"
-      class="rounded-full bg-transparent p-3 font-medium uppercase leading-normal text-surface transition duration-150 ease-in-out hover:bg-neutral-100 focus:outline-none focus:ring-0 dark:text-white dark:hover:bg-indigo-900"
+      class="btn-foot"
       data-twe-ripple-init>
-      <span class="[&>svg]:h-5 [&>svg]:w-5">
+      <span class="svg-foot">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
@@ -266,9 +277,9 @@ class="flex flex-col items-center bg-indigo-600 text-center text-surface dark:bg
     <a
       href="https://instagram.com/irfnadi_"
       type="button"
-      class="rounded-full bg-transparent p-3 font-medium uppercase leading-normal text-surface transition duration-150 ease-in-out hover:bg-neutral-100 focus:outline-none focus:ring-0 dark:text-white dark:hover:bg-indigo-900"
+      class="btn-foot"
       data-twe-ripple-init>
-      <span class="mx-auto [&>svg]:h-5 [&>svg]:w-5">
+      <span class="svg-foot">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
@@ -283,9 +294,9 @@ class="flex flex-col items-center bg-indigo-600 text-center text-surface dark:bg
     <a
       href="https://github.com/IrfnCode"
       type="button"
-      class="rounded-full bg-transparent p-3 font-medium uppercase leading-normal text-surface transition duration-150 ease-in-out hover:bg-neutral-100 focus:outline-none focus:ring-0 dark:text-white dark:hover:bg-indigo-900"
+      class="btn-foot"
       data-twe-ripple-init>
-      <span class="mx-auto [&>svg]:h-5 [&>svg]:w-5">
+      <span class="svg-foot">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
@@ -299,13 +310,32 @@ class="flex flex-col items-center bg-indigo-600 text-center text-surface dark:bg
 </div>
 
 <!--Copyright section-->
-<div class="w-full bg-indigo-700 p-4 text-center">
+<div class="copyright">
   © 2024 Copyright:
   <a href="https://fidocshigh.com">IrfnCode</a>
 </div>
 </footer>
 
   <!-- Footer end -->
+
+  <!-- Modal Item Detail Box -->
+  <div class="modal" id="item-detail-modal">
+    <div class="modal-container">
+      <a href="#" class="close-icon"><i data-feather="x"></i></a>
+      <div class="modal-content">
+        <img src="img/products/1.jpg" alt="Product 1">
+        <div class="product-content">
+          <h3>Product 1</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur velit tempora, suscipit omnis minima neque!</p>
+          <div class="product-price">Rp.24.000</div>
+          <a href="#" class=""><i data-feather="shopping-cart"></i><span>Add To Cart</span></a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ModalItem Detail Box end -->
+
   <!-- Feather Icons -->
   <script>
     feather.replace()
