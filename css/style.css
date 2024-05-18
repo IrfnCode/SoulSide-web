@@ -57,6 +57,7 @@ link {
  @media (max-width: 420px) {
      .mobile {
          display: block; 
+         max-width: 90%
      }
      #hamburger-menu {
       display: inline-block;
