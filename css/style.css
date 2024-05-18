@@ -1,6 +1,7 @@
 html {
   scroll-behavior: smooth;
   background-color: #85573a;
+  display: fixed;
   
 }
 link {
