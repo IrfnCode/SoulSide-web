@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Alpine.js -->
+    <script src="https://unpkg.com/alpinejs@3.5.2/dist/cdn.min.js" defer></script>
+</head>
+<body>
+    <!-- Contoh Struktur Halaman -->
+    <div x-data="products">
+        <div x-data="cart">
+            <!-- Contoh Elemen Checkout -->
+            <button @click="checkout">Checkout</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('products', () => ({
+                items: [
+                    { id: 1, name: 'Coffee Latte', img: '1.jpg',  price: 20000 },
+                    { id: 2, name: 'Cappuccino', img: '2.jpg',  price: 25000 },
+                    { id: 3, name: 'Espresso', img: '3.jpg',  price: 15000 },
+                    { id: 4, name: 'Macchiato', img: '4.jpg',  price: 18000 },
+                    { id: 5, name: 'Caramel Latte', img: '5.jpg',  price: 22000 },
+                    { id: 6, name: 'Mocha', img: '6.jpg',  price: 25000 },
+                    { id: 7, name: 'Americano', img: '7.jpg',  price: 20000 },
+                    { id: 8, name: 'Flat White', img: '8.jpg',  price: 25000 },
+                    { id: 9, name: 'Caffe Misto', img: '9.jpg',  price: 20000 },
+                ],
+            }));
+
+            Alpine.store('cart', {
+                items: [],
+                total: 0,
+                quantity: 0,
+                name: '',
+                email: '',
+                phone: '',
+                add(newItem) {
+                    const cartItem = this.items.find((item) => item.id === newItem.id);
+                    if (!cartItem) {
+                        this.items.push({ ...newItem, quantity: 1, total: newItem.price });
+                        this.quantity++;
+                        this.total += newItem.price;
+                    } else {
+                        this.items = this.items.map((item) => {
+                            if (item.id !== newItem.id) {
+                                return item;
+                            } else {
+                                item.quantity++;
+                                item.total = item.price * item.quantity;
+                                this.quantity++;
+                                this.total += item.price;
+                                return item;
+                            }
+                        });
+                    }
+                },
+                remove(id) {
+                    const cartItem = this.items.find((item) => item.id === id);
+                    if (cartItem.quantity > 1) {
+                        this.items = this.items.map((item) => {
+                            if(item.id !== id) {
+                                return item;
+                            } else {
+                                item.quantity--;
+                                item.total = item.price * item.quantity;
+                                this.quantity--;
+                                this.total -= item.price;
+                                return item;
+                            }
+                        });
+                    } else if (cartItem.quantity === 1) {
+                        this.items = this.items.filter((item) => item.id !== id);
+                        this.quantity--;
+                        this.total -= cartItem.price;
+                    }
+                },
+                checkout() {
+                    var name = this.name;
+                    var email = this.email;
+                    var phone = this.phone;
+                    var total = this.total;
+                    var orderedItems = this.items.map(item => item.quantity + ' ' + item.name).join(', ');
+
+                    var telegramMessage = "*Costumer Order Detail*\n";
+                    telegramMessage += "> *Name:* " + name + "\n";
+                    telegramMessage += "> *Email:* " + email + "\n";
+                    telegramMessage += "> *Phone:* " + phone + "\n";
+                    telegramMessage += "> *Ordered Items:* " + orderedItems + "\n";
+                    telegramMessage += "> *Total Price:* " + rupiah(total) + "\n";
+
+                    fetch('https://api.telegram.org/bot7182226223:AAE7SqOOerBmOav9i7nEVtOnzcBsu5cRBJE/sendMessage', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            chat_id: '-1002055385293',
+                            text: telegramMessage,
+                            parse_mode: 'Markdown'
+                        })
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Pesanan Berhasil',
+                                text: 'Order berhasil ditempatkan. Terima kasih!',
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Pesanan Gagal',
+                                text: 'Ada masalah saat memproses pesanan. Silakan coba lagi.',
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Pesanan Gagal',
+                            text: 'Ada masalah saat memproses pesanan. Silakan coba lagi.',
+                        });
+                    });
+                }
+            });
+        });
+
+        const rupiah = (number) => {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency', 
+                currency: 'IDR',
+            }).format(number);
+        };
+    </script>
+</body>
+</html>

@@ -3,6 +3,9 @@ html {
   background-color: #85573a;
   
 }
+link {
+  display: none;
+}
 /* Navbar */
 .navbar {
   display: flex; 
@@ -176,7 +179,7 @@ display: inline-block;
  @media (max-width: 1024px) { 
      
   .extra-btn-2{
-display: inline-block; 
+display: flex; 
 right: 9%;
 }
 }
@@ -300,6 +303,7 @@ font-size: 0.7rem;
 
 .about {
 padding: 5rem 7% 1.4rem; 
+margin-bottom: 5rem;
 }
 .about h2 {
 text-align: center;
@@ -482,6 +486,10 @@ font-weight: 700;
   border-radius: 20px;
   margin: 1rem auto;
   cursor: pointer;
+}
+.form-container .checkout-button.disabled {
+  background-color: #999;
+  cursor: not-allowed;
 }
 /* Form Chekout End */
 

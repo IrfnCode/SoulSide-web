@@ -10,7 +10,7 @@
   <!-- ALPINE JS (SEBUAH LIBRARY JAVA SCRIPT UNTUK BEBERAPA KEPERLUAN)-->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <!-- APP (FILE UNTUK MENGELOLA ALPINEJS NYA) -->
-  <script src="src/app.js"></script>
+  <script src="src/app.js" async></script>
 
 
   <title>SOULSIDE COFFEE</title>
@@ -46,15 +46,15 @@
         </button>
 </div>
 <ul class="navbar-nav">
-  <li><a href="#section">Home</a></li>
+  <li><a href="index.html">Home</a></li>
   <li><a href="about.html">Tentang Kami</a></li>
-  <li><a href="menu.html">Menu</a></li>
+  <li><a href="#products">Menu</a></li>
   <li><a href="kontak.html">Kontak</a></li>
 </ul>
 <a class="extra-btn-1" href="https://wa.me/6285361093717?text=Halo+Admin+Saya+Ingin%0ABertanya">Tanya Admin</a>
-<a class="extra-btn-2" href="menu.html" id="shopping-cart-button">Order</a>
+<a class="extra-btn-2" href="#" id="shopping-cart-button">Order <span class="quantity-badge" x-show="$store.cart.quantity" x-text="$store.cart.quantity"></span></a>
 <!-- SHOPPING CART -->
-<!-- <div class="shopping-cart">
+<div class="shopping-cart">
   <template x-for="(item, index) in $store.cart.items" x-key="index">
   <div class="cart-item">
     <img :src="`img/products/${item.img}`" :alt="item.name">
@@ -74,7 +74,8 @@
   <h4 x-show="$store.cart.items.length">Total : <span x-text="rupiah($store.cart.total)"></span></h4>
 
   <div class="form-container" x-show="$store.cart.items.length">
-    <form id="checkout-form">
+    <form action='' id="checkout-form">
+  
       <h5>Customer Detail</h5>
     
       <label for="name">
@@ -90,17 +91,16 @@
         <input type="tel" name="phone" id="phone" x-model="$store.cart.phone">
       </label>
     
-      <button class="checkout-button" type="submit" id="checkout-button" @click="$store.cart.checkout()">Checkout</button>
+      <button class="checkout-button disabled" type="button" id="checkout-button" value="checkout" @click="$store.cart.checkout($event)">Checkout</button>
     </form>
-    
   </div>
-</div> -->
+</div>
 <!-- END SHOPPING CART -->
 </nav>
 
 </body>
   <!-- CALL TO ACTION -->
-  <section class="section">
+  <!-- <section class="section">
     <div class="section-content">
       <div class="section-content-text">
         <h2 class="section-title">SELAMAT DATANG</h2>
@@ -111,11 +111,11 @@
         </p>
   
         <div class="section-link-container">
-          <a href="menu.html" class="section-link">Temukan Kopimu disini</a>
+          <a href="#products" class="section-link">Temukan Kopimu disini</a>
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
   
   <!-- END CALL TO ACTION -->
 
@@ -140,11 +140,11 @@
 
   <!-- PRODUCT SECTION CARD -->
     <!-- PRODUCT 1 -->
-  <!-- <section class="products" id="products" x-data="products">
+  <section class="products" id="products" x-data="products">
     <h2>Menu <span>kami</span></h2>
-    <p>Nikmati kopi berkualitas tinggi dengan beragam rasa dan aroma yang menggugah. Setiap cangkir adalah kombinasi unik dari kekuatan dan kelezatan, menawarkan pengalaman kopi yang tak tertandingi dalam setiap tegukan.</p> -->
+    <p>Nikmati kopi berkualitas tinggi dengan beragam rasa dan aroma yang menggugah. Setiap cangkir adalah kombinasi unik dari kekuatan dan kelezatan, menawarkan pengalaman kopi yang tak tertandingi dalam setiap tegukan.</p>
       <!-- ITEM 1 -->
-  <!-- <div class="row">
+  <div class="row">
     <template x-for="(item, index) in items" x-key="index">
     <div class="product-card">
       <div class="product-icons">
@@ -197,7 +197,7 @@
     </div>
   </template>
   </div>
-</section> -->
+</section>
     <!-- END ITEM 1 -->
    
   <!-- END PRODUCT SECTION -->

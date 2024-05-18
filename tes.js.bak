@@ -1,0 +1,63 @@
+var token = '7182226223:AAE7SqOOerBmOav9i7nEVtOnzcBsu5cRBJE';
+var personal = '7192842152'
+//https://api.telegram.org/bot7182226223:AAE7SqOOerBmOav9i7nEVtOnzcBsu5cRBJE/sendMessage?chat_id=7192842152&text=haloJuga
+
+checkout() {
+    // Mendapatkan data dari form
+    var name = this.name;
+    var email = this.email;
+    var phone = this.phone;
+    var total = this.total;
+    var orderedItems = this.items.map(item => item.quantity + ' ' + item.name).join(', ');
+
+    // Membangun pesan untuk dikirim ke API Telegram
+    var telegramMessage = "*Customer Order Detail*\n";
+    telegramMessage += "> *Name:* " + name + "\n";
+    telegramMessage += "> *Email:* " + email + "\n";
+    telegramMessage += "> *Phone:* " + phone + "\n";
+    telegramMessage += "> *Ordered Items:* " + orderedItems + "\n";
+    telegramMessage += "> *Total Price:* " + rupiah(total) + "\n"; // Format total harga
+
+    // Menjalankan HTTP POST request ke API Telegram
+    fetch('https://api.telegram.org/bot7182226223:AAE7SqOOerBmOav9i7nEVtOnzcBsu5cRBJE/sendMessage', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        chat_id: '-1002055385293',
+        text: telegramMessage,
+        parse_mode: 'Markdown'
+      })
+    })
+    .then(response => {
+      if (response.ok) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Order berhasil ditempatkan',
+          text: 'Terima kasih!'
+        });
+        // Clear the form and cart
+        this.name = '';
+        this.email = '';
+        this.phone = '';
+        this.items = [];
+        this.total = 0;
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Ada masalah saat memproses pesanan. Silakan coba lagi.'
+        });
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Ada masalah saat memproses pesanan. Silakan coba lagi.'
+      });
+    });
+  }
+});

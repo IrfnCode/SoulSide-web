@@ -84,28 +84,118 @@ document.addEventListener('alpine:init', () => {
                 this.total -= cartItem.price;
             }
         },
-        checkout() {
-            // Logika checkout untuk mengirim pesan WhatsApp
+        checkout(event) {
+            // Mencegah form dari submit dan refresh
+            event.preventDefault();
+
             // Mendapatkan data dari form
             var name = this.name;
             var email = this.email;
             var phone = this.phone;
             var total = this.total;
             var orderedItems = this.items.map(item => item.quantity + ' ' + item.name).join(', ');
-            // Membangun pesan WhatsApp
-            var whatsappMessage = "*Costumer Order Detail*\n";
-            whatsappMessage += "> _Name: " + name + "_\n";
-            whatsappMessage += "> _Email: " + email + "_\n";
-            whatsappMessage += "> _Phone: " + phone + "_\n";
-            whatsappMessage += "> _Ordered Items: " + orderedItems + "_\n";
-            whatsappMessage += "> _Total Price: " + rupiah(total) + "_\n"; // Format total harga
-            whatsappMessage += "Berikut Pesanan Saya Mohon Konfirmasi Untuk Memproses Pesanan Saya\n";
 
-            // Membuka WhatsApp dengan pesan yang dibangun
-            window.open("https://wa.me/+6285361093717?text=" + encodeURIComponent(whatsappMessage), '_blank');
-        }
-    })
+            // Membangun pesan untuk dikirim ke API Telegram
+            var telegramMessage = "*Customer Order Detail*\n";
+            telegramMessage += "> *Name:* " + name + "\n";
+            telegramMessage += "> *Email:* " + email + "\n";
+            telegramMessage += "> *Phone:* " + phone + "\n";
+            telegramMessage += "> *Ordered Items:* " + orderedItems + "\n";
+            telegramMessage += "> *Total Price:* " + rupiah(total) + "\n"; // Format total harga
+
+            // Menjalankan HTTP POST request ke API Telegram
+            fetch('https://api.telegram.org/bot7182226223:AAE7SqOOerBmOav9i7nEVtOnzcBsu5cRBJE/sendMessage', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                chat_id: '-1002055385293',
+                text: telegramMessage,
+                parse_mode: 'Markdown'
+              })
+            })
+            .then(response => {
+              if (response.ok) {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Pesanan Telah Kami Terima',
+                  text: 'Kami Akan Menghubungi Anda Secepatnya, Terima kasih!'
+                }).then(() => {
+                    // Refresh halaman setelah SweetAlert di-close
+                    location.reload();
+                });
+                // Clear the form and cart
+                this.name = '';
+                this.email = '';
+                this.phone = '';
+                this.items = [];
+                this.total = 0;
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Ada masalah saat memproses pesanan. Silakan coba lagi.'
+                });
+              }
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Ada masalah saat memproses pesanan. Silakan coba lagi.'
+              });
+            });
+          }
+        });
+
+// Form Validation
+const checkoutButton = document.querySelector('.checkout-button');
+checkoutButton.disabled = true;
+
+const form = document.querySelector('#checkout-form');
+
+form.addEventListener('keyup', function() {
+    for( let i = 0; i < form.elements.length; i++ ) {
+        if(form.elements[i].value.length !== 0) {
+            checkoutButton.classList.remove('disabled');
+            checkoutButton.classList.add('disabled');
+    } else {
+        return false;
+    }
+ }
+
+ checkoutButton.disabled = false;
+ checkoutButton.classList.remove('disabled');
+
 });
+//Kirim Data Ketika Checkout
+// checkoutButton.addEventListener('click', function(e) {
+//     e.preventDefault();
+//     const formData = new FormData(form);
+//     const data = new URLSearchParams(formData);
+//     const objData = Object.fromEntries(data);
+//     const message = formatMessage(objData);
+//     window.open('https://wa.me/6285361093717?text=' + encodeURIComponent(message));
+// })
+});
+
+//Format Pesan
+// const formatMessage = (obj) => { 
+//     return `Data Customer 
+//     Nama : ${obj.name}
+//     Email : ${obj.email}
+//     Phone : ${obj.phone}
+//     Total : ${rupiah(obj.total)}
+// Data Pesanan
+// ${JSON.parse(obj.items).map((item) => `${item.name} (${item.quantity} x ${rupiah(item.total)}) \n`)}
+
+// Total: ${rupiah(obj.total)}
+
+// Terimakasih.`
+// }
+
 
 //Konversi Ke Rupiah
 const rupiah = (number) => {
@@ -113,6 +203,6 @@ const rupiah = (number) => {
         style: 'currency', 
         currency: 'IDR',
         // minimumFractionDigits: 0
-}).format(number);
+    }).format(number);
 }
 
