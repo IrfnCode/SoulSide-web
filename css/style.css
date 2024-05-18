@@ -61,15 +61,17 @@ link {
      }
      #hamburger-menu {
       display: inline-block;
+      
      }
      .navbar .navbar-nav {
       position: absolute;
+      display: block;
       text-align: center;
       top: 100%;
       right: -100%;
       background-color: #ffffff ;
       width: 20rem;
-      height: 100vh;
+      height: 50vh;
       z-index: 1000; /*untuk menempatkan navbar diatas kalo ga pake ketimpa sama section*/
       transition: 0.9s;
      }
