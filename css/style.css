@@ -1,7 +1,6 @@
 html {
   scroll-behavior: smooth;
   background-color: #85573a;
-  display: fixed;
   
 }
 link {
@@ -55,7 +54,7 @@ link {
   .mobile {
     display: none;
  }
- @media (max-width: 1023px) {
+ @media (max-width: 420px) {
      .mobile {
          display: block; 
      }
