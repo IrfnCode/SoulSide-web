@@ -54,21 +54,24 @@ link {
   .mobile {
     display: none;
  }
- @media (max-width: 1023px) {
+ @media (max-width: 420px) {
      .mobile {
          display: block; 
+         max-width: 90%
      }
      #hamburger-menu {
       display: inline-block;
+      
      }
      .navbar .navbar-nav {
       position: absolute;
+      display: block;
       text-align: center;
       top: 100%;
       right: -100%;
       background-color: #ffffff ;
       width: 20rem;
-      height: 100vh;
+      height: 50vh;
       z-index: 1000; /*untuk menempatkan navbar diatas kalo ga pake ketimpa sama section*/
       transition: 0.9s;
      }
@@ -614,7 +617,7 @@ font-weight: 700;
   border: 1px solid #9c9c9c;
   border-radius: 5rem;
   padding-left: 2rem;
-}
+} 
 .kontak .Kontak-row form .input-kontak input {
   width: 100%;
   padding: 1rem;
@@ -786,4 +789,3 @@ color:#fff
     font-size: 55%;
   }
 }
-
